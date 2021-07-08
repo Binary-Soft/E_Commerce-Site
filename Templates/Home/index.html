@@ -112,31 +112,7 @@
             </div> -->
             
         </div> 
-
-
-
-        <!-- Display Product Details -->
-
-        <div>
-
-            {% for product in ProductsInfo %}
-                {{ product.name }} <br>
-                {{ product.price }} <br>
-                <img src="{{ product.pic.url }}" alt="{{ product.pic }}" width=100 height=150>
-
-                <!-- other info -->
-
-             {% endfor %}
-        </div>
-
-
-
-
-
-
-
-
-
+        
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
             data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -151,9 +127,37 @@
 </div>
     <!-- Product Carousel Ends -->
 
-    <!-- Optional JavaScript; choose one of the two! -->
+    <div class="recent_items_text text-center">
+        <h3>Recent Items</h3>
+    </div>
 
+
+    <!-- product list starts  -->
+
+    <div class="wrapper">
+        <div class="container">
+            <div class="row g-1">
+
+                {% for product in ProductsInfo %}
+                    <div class="col-md-3">
+                        <div class="card p-3">
+                            <div class="text-center"> <img src="{{ product.pic.url }}" width="200" height="200"> </div>
+                            <div class="product-details"> <span class="font-weight-bold d-block">$ {{ product.price }} </span> <span> {{ product.name }} </span>
+                                <div class="buttons d-flex flex-row">
+                                    <div class="cart"><i class="fa fa-shopping-cart"></i></div> <button class="btn btn-success cart-button btn-block"><span class="dot">1</span>Add to cart </button>
+                                </div>
+                                <div class="weight"> <small>1 piece 2.5kg</small> </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript; choose one of the two! -->
     <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="../../Home/js/productlist.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
