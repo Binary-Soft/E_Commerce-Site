@@ -140,25 +140,31 @@
             <div class="row g-1">
 
                 {% for product in ProductsInfo %}
-                <div class="col-md-3">
-                    <div class="card p-3">
-                        <div class="text-center"> <img src="{{ product.pic.url }}" width="200" height="200"> </div>
-                        <div class="product-details"> <span class="font-weight-bold d-block">$ {{ product.price }}
-                            </span> <span> {{ product.name }} </span>
-                            <div class="buttons d-flex flex-row">
-                                <div class="cart"><i class="fa fa-shopping-cart"></i></div> <button
-                                    class="btn btn-success cart-button btn-block"><span class="dot">1</span>Add to cart
-                                </button>
+                        <div class="col-md-3">
+                            <div class="card p-3">
+                                <a href="{% url 'Home:Specific_Product' product.id %}">
+                                    <div class="text-center"> <img src="{{ product.pic.url }}" width="200" height="200"> </div>
+                                </a>
+                                <div class="product-details"> <span class="font-weight-bold d-block">Tk {{ product.price }}
+                                    </span>
+                                    <a href="{% url 'Home:Specific_Product' product.id %}">
+                                        <span> {{ product.name|title }} </span>
+                                    </a>
+                                    <div class="buttons d-flex flex-row">
+                                        <div class="cart"><i class="fa fa-shopping-cart"></i></div> <button
+                                            class="btn btn-success cart-button btn-block"><span class="dot">1</span>Add to cart
+                                        </button>
+                                    </div>
+                                    <div class="weight"> <small>1 piece 2.5kg</small> </div>
+                                </div>
                             </div>
-                            <div class="weight"> <small>1 piece 2.5kg</small> </div>
                         </div>
-                    </div>
-                </div>
                 {% endfor %}
 
             </div>
         </div>
     </div>
+    
   <!-- footer starts  -->
   <div class="footer-dark">
     <footer>

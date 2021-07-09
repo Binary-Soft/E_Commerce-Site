@@ -18,6 +18,9 @@ class Product(models.Model):
     time = models.DateTimeField(auto_now_add=True, blank=True)
     weight = models.DecimalField(max_digits = 10, decimal_places=3, default=0.00)
     pic = models.ImageField(upload_to='picture/')
+    pic2 = models.ImageField(upload_to='picture/', default=None)
+    pic3 = models.ImageField(upload_to='picture/', default=None)
+    pic4 = models.ImageField(upload_to='picture/', default=None)
 
     def __str__(self):
         return self.name
