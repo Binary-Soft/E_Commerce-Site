@@ -18,8 +18,8 @@
 
 <body>
 
-    <!-- NavBar Starts -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+      <!-- NavBar Starts -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#"><i class="fab fa-shopify"></i> Binary Store</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -50,14 +50,29 @@
                         </ul>
                     </li>
                 </ul>
-                <form class="d-flex">
+                <div class="">
+                    <div class="dropdown">
+                        <a class="btn btn-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                          Cart
+                        </a>
+                      
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                          <li><a class="dropdown-item" href="#">Product Name</a></li>
+                          <li><a class="dropdown-item" href="#">Product Name</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item" href="#">See All</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                <form class="d-flex addcart_button">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-dark" type="submit">Search</button>
                 </form>
             </div>
         </div>
     </nav>
-
+    <!-- Navbar Ends  -->
+    
     <div class="container mt-5 mb-5">
         <div class="card">
             <div class="row g-0">

@@ -1,6 +1,3 @@
-/* add cart button  */
-
-/* add cart button ends  */
 .product_slide_container{
     margin-left: 12% ;
     margin-top: 0%;
@@ -159,30 +156,7 @@ nav{
     }
 }
 
-.card:hover .buttons {
-    opacity: 1
-}
 
-.card:hover .weight {
-    margin-top: 10px
-}
-
-.card:hover {
-    transform: scale(1.04);
-    z-index: 2;
-    overflow: hidden
-}
-
-.recent_items_text
-{
-
-   margin-bottom: 3%;
-}
-
-.product_image_recent{
-    width: 500px;
-    height: 500px;
-}
 
 /* footer  */
 .footer-dark {
