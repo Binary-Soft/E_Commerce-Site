@@ -19,18 +19,7 @@ class indexview(View):
         a = self.model1.objects.all()
         b = self.model2.objects.all()
         
-        request.session.clear_expired()
-        info = request.session.items()
-        print(f'\n\n{info}\n\n')
-        li = []
-        AddCartInfo = {}
-        for (key, value) in info:
-            product_info = self.model2.objects.get(pk=int(key))
-            li.append(product_info)
-            AddCartInfo[product_info] = value
-        for product_info in li:
-            x = product_info.price
-            AddCartInfo[product_info] = {AddCartInfo[product_info]: x*AddCartInfo[product_info]}
+        AddCartInfo = Session_Data(request, self.model2)
 
         return render(request, self.template_name, {self.context_object_name1 : a,
         self.context_object_name2 : b, self.context_object_name3 : AddCartInfo})
@@ -52,17 +41,51 @@ class SpecificProduct(DetailView):
     model = Product
     template_name = 'Home/specificProduct.html'
     context_object_name = 'productinfo'
+    context_object_name2 = 'AddCartInfos'
 
     def get(self, request, *args, **kwargs):
         id =  self.kwargs.get('pk')
         product_info = self.model.objects.get(pk=id)
-        return render(request, self.template_name, {self.context_object_name: product_info})
+        
+        AddCartInfo = Session_Data(request, self.model)
+
+        return render(request, self.template_name, {self.context_object_name: product_info,
+        self.context_object_name2 : AddCartInfo})
     
 
 class cart(View):
     
+    model = Product
     template_name = 'Home/AddCartPage.html'
-    context_object_name = 'AddCartInfo'
+    context_object_name = 'AddCartInfos'
+    context_object_name2 = 'total_price'
 
     def get(self, request, *args, **kwargs):
-        return render(request, self.template_name, {self.context_object_name: 'Testing'})
+        info = Session_Data(request, self.model)
+
+        "Now count total price add cart products"
+        total_addcart_price = 0
+        for vaule in info.values():
+            for total_price in vaule.values():
+                total_addcart_price += total_price
+        return render(request, self.template_name, {self.context_object_name: info, 
+        self.context_object_name2: total_addcart_price})
+
+
+
+
+def Session_Data(request, model) :
+    request.session.clear_expired()
+    info = request.session.items()
+    print(f'\n\n{info}\n\n')
+    li = []
+    AddCartInfo = {}
+    for (key, value) in info:
+        product_info = model.objects.get(pk=int(key))
+        li.append(product_info)
+        AddCartInfo[product_info] = value
+    for product_info in li:
+        x = product_info.price
+        AddCartInfo[product_info] = {AddCartInfo[product_info]: x*AddCartInfo[product_info]}
+    
+    return AddCartInfo
